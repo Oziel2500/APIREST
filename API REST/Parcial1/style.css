@@ -5,12 +5,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    label {
-            background-color: yellow;
-            /* Change the background color to yellow */
-            padding: 10px;
-            /* Optional: Add padding for spacing */
-            /* Other styles you want to apply */
-        }
+   
 
 }
+
+ label {
+     background-color: yellow;
+     padding: 10px;
+     
+ }
