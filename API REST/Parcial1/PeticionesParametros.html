@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog API Request with Parameters</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Peticiones a la API del perro</h1>
+
+        <div class="form-group">
+            <label for="breedSelect">Selecciona una raza:</label>
+            <select id="breedSelect" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <button id="fetchButton" class="btn btn-primary">Fetch Dog Image</button>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="mb-3">Imagen del perro:</h2>
+            <img id="dogImage" class="img-fluid" src="" alt="Dog Image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const breedSelect = document.getElementById("breedSelect");
+            const fetchButton = document.getElementById("fetchButton");
+            const dogImage = document.getElementById("dogImage");
+
+            // Fetch list of breeds and populate the select element
+            try {
+                const response = await fetch("https://dog.ceo/api/breeds/list/all");
+                const data = await response.json();
+                const breeds = Object.keys(data.message);
+
+                breeds.forEach(breed => {
+                    const option = document.createElement("option");
+                    option.value = breed;
+                    option.textContent = breed;
+                    breedSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error(error);
+            }
+
+            fetchButton.addEventListener("click", async () => {
+                const selectedBreed = breedSelect.value;
+
+                try {
+                    const response = await fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random`);
+                    const data = await response.json();
+                    const imageUrl = data.message;
+                    dogImage.setAttribute("src", imageUrl);
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
