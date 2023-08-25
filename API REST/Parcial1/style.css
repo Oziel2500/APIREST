@@ -1,12 +1,11 @@
 .background-image {
-    label {
-            color: rgb(236, 233, 4);
-            font-weight: bold;
-            font-size: 16px;
-        }
+        
     background-image: url('fondo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+    label {
+            color: blue;
+        }
 }
