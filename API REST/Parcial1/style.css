@@ -10,7 +10,17 @@
 }
 
  label {
-     background-color: yellow;
+     color: #00d9ff;
      padding: 10px;
-     
+     text-shadow: black 1px;
+ }
+ h1 {
+     color: #00d9ff;
+     padding: 10px;
+     text-shadow: white 2px 1px;
+ }
+ h2 {
+     color: #00d9ff;
+     padding: 10px;
+     text-shadow: white 2px 1px;
  }
