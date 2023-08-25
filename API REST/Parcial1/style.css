@@ -6,6 +6,11 @@
     background-attachment: fixed;
     min-height: 100vh;
     label {
-            color: blue;
+            background-color: yellow;
+            /* Change the background color to yellow */
+            padding: 10px;
+            /* Optional: Add padding for spacing */
+            /* Other styles you want to apply */
         }
+
 }
