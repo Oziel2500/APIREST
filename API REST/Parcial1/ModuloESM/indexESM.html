@@ -11,12 +11,19 @@
     </div>
 
     <script type = "module">   
-        function generarNumeroAleatorio(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+        function generarNumeroAleatorio(min, max) 
+        {return Math.floor(Math.random() * (max - min + 1)) + min;}
         var numeroAleatorio = generarNumeroAleatorio(0, 3); // Genera un número entre 1 y 100
-     import * as modules from "./funcion.js";
-     console.log(modules.ObtenerFrase(numeroAleatorio));
+        import * as modules from "./funcion.js";
+
+            document.getElementById("btnGenerar").addEventListener("click", function () 
+            {
+                 var min = 1; // Valor mínimo para el número aleatorio
+                 var max = 10; // Valor máximo para el número aleatorio
+                 var numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+
+                     console.log(modules.ObtenerFrase(numeroAleatorio));
+                });
     </script>
 
 </body>
