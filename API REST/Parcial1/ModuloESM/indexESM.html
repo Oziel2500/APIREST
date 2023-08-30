@@ -10,9 +10,13 @@
         <button id="PalabraAleatoria">Genera una palabra</button>
     </div>
 
-    <script Type = "module">    
+    <script type = "module">   
+        function generarNumeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var numeroAleatorio = generarNumeroAleatorio(0, 3); // Genera un número entre 1 y 100
      import * as modules from "./funcion.js";
-     console.log(modules.ObtenerFrase(3));
+     console.log(modules.ObtenerFrase(numeroAleatorio));
     </script>
 
 </body>
