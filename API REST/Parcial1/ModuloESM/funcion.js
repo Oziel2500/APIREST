@@ -1,4 +1,4 @@
-let frases = ["Hola", "Adios", "Bye", "Hello"];
+const frases = ["Hola", "Adios", "Bye", "Hello"];
 
 export function ObtenerFrase(indice) {
     return frases[indice];
