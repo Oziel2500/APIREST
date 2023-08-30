@@ -9,13 +9,13 @@
 
 <body>
     <div>
-        <button id="PalabraAleatoria">Genera una palabra</button>
+        <button id="btnPalabraAleatoria">Genera una palabra</button>
     </div>
 
     <script type="module">
 
         import * as modules from "./funcion.js";
-        document.getElementById("btnGenerar").addEventListener("click", function () {
+        document.getElementById("btnPalabraAleatoria").addEventListener("click", function () {
         console.log(modules.ObtenerFrase());
         });
     </script>
