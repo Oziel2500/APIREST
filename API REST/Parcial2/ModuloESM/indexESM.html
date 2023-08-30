@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo ESM</title>
+</head>
+
+<body>
+    <div>
+        <button id="btnPalabraAleatoria">Genera una palabra</button>
+    </div>
+
+    <script type="module">
+        import {ObtenerFrase} from "./funcion.js";
+
+        document.getElementById("btnPalabraAleatoria").addEventListener("click",function(){
+            var numeroAleatorio = Math.floor(Math.random() * 4);
+            console.log(numeroAleatorio);
+
+            ObtenerFrase(numeroAleatorio).then(frase => {
+                console.log(frase);
+            })
+            .catch(error =>{
+                console.error(error);
+            });
+        })       
+    </script>
+
+</body>
+
+</html>
