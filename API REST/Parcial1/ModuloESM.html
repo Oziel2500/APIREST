@@ -6,6 +6,20 @@
     <title>Modulo ESM</title>
 </head>
 <body>
-    
+    <div> 
+        <button id="PalabraAleatoria">Genera una palabra</button>
+    </div>
+
+    <script>    
+    let frases = ["Hola", "Adios", "Bye", "Hello"];
+
+        export function ObtenerFrase(indice) {
+            return frases[indice];
+        }
+
+        console.log(module);
+        //module.exports.ObtenerFrase = ObtenerFrase;
+    </script>
+
 </body>
 </html>
