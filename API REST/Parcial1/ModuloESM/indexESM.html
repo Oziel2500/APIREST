@@ -10,15 +10,9 @@
         <button id="PalabraAleatoria">Genera una palabra</button>
     </div>
 
-    <script>    
-    let frases = ["Hola", "Adios", "Bye", "Hello"];
-
-        export function ObtenerFrase(indice) {
-            return frases[indice];
-        }
-
-        console.log(module);
-        //module.exports.ObtenerFrase = ObtenerFrase;
+    <script Type = "module">    
+     import * as modules from "./funcion.js";
+     console.log(modules.ObtenerFrase(3));
     </script>
 
 </body>
