@@ -22,10 +22,12 @@ servidor.listen(8080, () => {
 const express = require('express');
 const morgan = require('morgan');
 const fs = require('fs');
+var cors = require('cors');
 const path = require('path');
 const mysql = require('mysql2');
 var app = express()
 
+app.use(cors());
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a' })
 
 app.get("/Empleados", async(req,res)=>{

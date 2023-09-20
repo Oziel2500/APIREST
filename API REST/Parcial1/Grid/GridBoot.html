@@ -3,27 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Bootstrap</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tabla con Bootstrap Table</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Tu contenido HTML aquí -->
-    <table id="table" data-toggle="table">
-    </table>
-
     <script>
-        $('#table').bootstrapTable({
-        url: 'http://localhost:8080/Empleados',
-        columns: [{ field: 'idTurnoa', title: 'ID'},
-        {field: 'nombre', title: 'Nombre'},
-        {field: 'salario', title: 'Salario'}]        
-        })
+        document.addEventListener('DOMContentLoaded', function () {
+                // Hacer una solicitud a la API
+                fetch('http://localhost:8080/Empleados')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabla = $('#miTabla');
+                        data.forEach(item => {
+                            tabla.bootstrapTable('append', {
+                                Turno: item.Turno,
+                                Nombre: item.Nombre,
+                                Salario: item.Salario
+                            });
+                        });
+                    })
+                    .catch(error => console.error('Error al obtener datos:', error));
+            });
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    <div class="container">
+        <h1>Hola amiguitos</h1>
+        <table id="miTabla" data-toggle="table" data-pagination="true" data-search="true">
+            <thead>
+                <tr>
+                    <th data-field="idTurno">Turno</th>
+                    <th data-field="Nombre">Nombre</th>
+                    <th data-field="Salario">Salario</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <button id="btnFuncion"></button>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.js"></script>
+    <script src="./Grid.js"></script>
 </body>
 
 </html>
