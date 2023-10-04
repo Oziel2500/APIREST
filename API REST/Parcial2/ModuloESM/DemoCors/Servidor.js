@@ -1,4 +1,4 @@
-/*let http = require('http');
+let http = require('http');
 
 let servidor = http.createServer(function (req, res) {
 
@@ -18,7 +18,7 @@ servidor.listen(8080, () => {
     console.log("Servidor Node-Http escuchando en pueto 8080");
 
 });
-*/
+
 const express = require('express');
 const morgan = require('morgan');
 const fs = require('fs');
@@ -27,7 +27,7 @@ const path = require('path');
 const mysql = require('mysql2');
 // const bearer = require('express-bearer-token');
 // const axios = require('axios');
-// var app = express()
+var app = express()
 
 // app.use(cors());
 // var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a' })
@@ -94,39 +94,64 @@ const mysql = require('mysql2');
 //     }
 
 // });
-app.get("/Empleados", async(req,res)=>{
-    try {
-        const conn = await mysql.createConnection({host:'localhost',user:'root',password:'', database:'empleados', port:3307})
-        const [rows, fields] = await conn.promise().query('SELECT * FROM turnoa')
-        res.json(rows)
-    } catch (error) {
-        res.status(500).json({mensaje:error.sqlMessage})
-    }
-})
+// app.get("/Empleados/:turnoa", async(req,res)=>{
+//     try {
+//         const conn = await mysql.createConnection({host:'localhost',user:'root',password:'', database:'empleados', port:3307})
+//         const [rows, fields] = await conn.promise().query('SELECT * FROM turnoa')
+//         res.json(rows)
+//     } catch (error) {
+//         res.status(500).json({mensaje:error.sqlMessage})
+//     }
+// })
 
-app.get("/Empleados/:id", async (req, res) => {
-    try {
-        console.log(req.params.id)
-        const conn = await mysql.createConnection({ host: 'localhost', user: 'root', password: '', database: 'empleados', port: 3307 })
-        const [rows, fields] = await conn.promise().query('SELECT * FROM turnoa WHERE idTurno = '+req.params.id)
+// app.get("/Empleados/:id", async (req, res) => {
+//     try {
+//         console.log(req.params.id)
+//         const conn = await mysql.createConnection({ host: 'localhost', user: 'root', password: '', database: 'empleados', port: 3307 })
+//         const [rows, fields] = await conn.promise().query('SELECT * FROM turnoa WHERE idTurno = '+req.params.id)
         
-        res.json(rows)
-    } catch (error) {
-        res.status(500).json({ mensaje: error.sqlMessage })
-    }
-})
+//         res.json(rows)
+//     } catch (error) {
+//         res.status(500).json({ mensaje: error.sqlMessage })
+//     }
+// })
 
-app.delete("/Empleados/:id", async (req, res) => {
-    try {
-        console.log(req.query.id)
-        const conn = await mysql.createConnection({ host: 'localhost', user: 'root', password: '', database: 'empleados', port: 3307 })
-        const [rows, fields] = await conn.promise().query('DELETE FROM turnoa WHERE idTurno = ' + req.params.id)
+// app.delete("/Empleados/:id", async (req, res) => {
+//     try {
+//         console.log(req.query.id)
+//         const conn = await mysql.createConnection({ host: 'localhost', user: 'root', password: '', database: 'empleados', port: 3307 })
+//         const [rows, fields] = await conn.promise().query('DELETE FROM turnoa WHERE idTurno = ' + req.params.id)
 
-        res.json(rows)
-    } catch (error) {
-        res.status(500).json({ mensaje: error.sqlMessage })
-    }
+//         res.json(rows)
+//     } catch (error) {
+//         res.status(500).json({ mensaje: error.sqlMessage })
+//     }
+// })
+
+app.use(cors());
+app.use(express.json());
+//app.use(bearerToken());
+const multer = require('multer');
+const folder = path.join(__dirname + '/archivos/');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, folder) },
+    filename: function (req, file, cb) { cb(null, file.originalname) }
+});
+const upload = multer({ storage: storage })
+app.use(express.urlencoded({ extended: true }));
+app.use(upload.single('archivo'));
+
+app.post('/RecibirArchivo', (req, res) => {
+    console.log(`se recibio el archivo: ${req.file.originalname}`);
+    console.log('se recibio el formulario:' + JSON.stringify(req.body));
+    res.json(req.body);
 })
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.post('/Recibir', (req, res) => {
+    const { tipo, usuario, contraseña } = req.body;
+    res.json({ mensaje: 'Datos recibidos exitosamente \n Tipo: ' + tipo + '\n Usuario: ' + usuario + '\ Contraseña: ' + contraseña });
+});
 
 app.use(express.json())
 app.get("/Empleados", (req,res)=>{
