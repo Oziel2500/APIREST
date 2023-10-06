@@ -1,19 +1,11 @@
 const express = require('express');
 const app = express();
-var cors = require('cors');
-const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
 var mysql2 = require('mysql2/promise');
-const bodyParser = require("body-parser"); //sin uso
-const multer = require('multer');
 
-//const multer = require('multer')
-const upload = multer()
 
 
 app.use(express.json())
-app.use(cors());
+
 
 app.post("/Alumnos", async (req, resp, next) => {
     try {
