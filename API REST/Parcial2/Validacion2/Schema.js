@@ -20,8 +20,7 @@ app.post('/Peticion', checkSchema({
     }
     else {
         res.json(result);
-    }
-});
+    }});
 
 app.listen(8080, () => {
     console.log("Servidor escuchando en el puerto 8080");
