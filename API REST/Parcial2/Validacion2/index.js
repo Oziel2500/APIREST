@@ -8,7 +8,7 @@ app.post("/usuario", [
     check('correo').isEmail(),
 ], (req, res) => {
     const result = validationResult(req);
-    if (resourceLimits.isEmpty()) {
+    if (result.isEmpty()) {
         console.log(req.body);
         res.json({ mensaje: "Respuesta a peticion post" });
     } else {
@@ -16,7 +16,7 @@ app.post("/usuario", [
     }
 });
             //♥ alt+3
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log("Servidor escuchando en el puerto 8080");
 });
 
