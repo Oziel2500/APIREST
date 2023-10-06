@@ -17,7 +17,7 @@ app.post("/usuario", [
 });
             //♥ alt+3
 app.listen(3000, () => {
-    console.log("Servidor escuchando en el puerto 8080");
+    console.log("Servidor escuchando en el puerto 3000");
 });
 
 //descagrar en esta carpeta express validator paquete

@@ -19,5 +19,5 @@ app.post('/Peticion', check('tipo').isNumeric().withMessage("Que paso pa, tiene 
 });
 
 app.listen(8080, () => {
-    console.log("Servidor escuchando en el puerto 8080");
+    console.log("Servidor escuchando en el puerto 3000");
 })
