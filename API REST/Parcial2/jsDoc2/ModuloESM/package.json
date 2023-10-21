@@ -1,0 +1,13 @@
+{
+  "name": "moduloesm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "funcion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc --readme README.md --configure jsDoc.json --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "jsdoc2",
+  "version": "1.0.0",
+  "description": "se le agrego al script el type module en el package.json\r al index.js se le agrego export a la funcion.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc --readme README.md --configure jsDoc.json --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clean": "^4.0.2",
+    "clean-jsdoc-theme": "^4.2.13",
+    "jsdoc-theme": "^0.1.4"
+  }
+}
