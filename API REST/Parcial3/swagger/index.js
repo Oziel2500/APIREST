@@ -126,8 +126,7 @@ app.put("/usuario", async (req, res) => {
 
 /**
  * @swagger
- * Metodo delete
- * usamos la ruta para borrar, mandando el usuario a eliminar de nuestra base de datos
+ * 
  * 
  * delete:
   path: "/usuarios"
