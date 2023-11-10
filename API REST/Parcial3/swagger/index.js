@@ -153,7 +153,6 @@ app.put("/usuario", async (req, res) => {
         res.status(500).json(
           mensaje: err.sqlMessage
         )
-
  * 
  * 
  * 
