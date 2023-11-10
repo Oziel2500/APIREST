@@ -146,3 +146,40 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.listen(3000, () => {
     console.log("Servidor express escuchando en el puerto 3000");
 });
+
+
+
+/**
+ * @swagger
+ * Metodo delete
+ * usamos la ruta para borrar, mandando el usuario a eliminar de nuestra base de datos
+ * 
+ * delete:
+  path: "/usuarios"
+  handler: 
+    async (req, res) => 
+      try:
+        const conn = await mysql.createConnection(
+          host: 'localhost'
+          user: 'root'
+          password: ''
+          database: 'login'
+        )
+        const [rows, fields] = await conn.query(`DELETE from usuario where Tipo=${req.query.Tipo}`);
+        if (rows.affectedRows == 0) 
+          res.json(
+            mensaje: "Registro No Eliminado"
+          )
+        else 
+          res.json(
+            mensaje: "Registro Eliminado"
+          )
+      catch (err) 
+        res.status(500).json(
+          mensaje: err.sqlMessage
+        )
+
+ * 
+ * 
+ * 
+ */
