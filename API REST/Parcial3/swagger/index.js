@@ -127,31 +127,33 @@ app.put("/usuario", async (req, res) => {
 /**
  * @swagger
  * 
- * 
- * delete:
+ * delete_usuario:
+  summary: "Eliminar usuario"
+  description: "Elimina un usuario según el tipo proporcionado en la solicitud."
+  method: DELETE
   path: "/usuarios"
-  handler: 
-    async (req, res) => 
-      try:
-        const conn = await mysql.createConnection(
-          host: 'localhost'
-          user: 'root'
-          password: ''
-          database: 'login'
-        )
-        const [rows, fields] = await conn.query(`DELETE from usuario where Tipo=${req.query.Tipo}`);
-        if (rows.affectedRows == 0) 
-          res.json(
-            mensaje: "Registro No Eliminado"
-          )
-        else 
-          res.json(
+  parameters:
+    - name: Tipo
+      in: query
+      description: "Tipo de usuario a eliminar."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: "Éxito"
+      content:
+        application/json:
+          example:
             mensaje: "Registro Eliminado"
-          )
-      catch (err) 
-        res.status(500).json(
-          mensaje: err.sqlMessage
-        )
+    '500':
+      description: "Error del servidor"
+      content:
+        application/json:
+          example:
+            mensaje: "{error_message}"
+
+ * 
  * 
  * 
  * 
