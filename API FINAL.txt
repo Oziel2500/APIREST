@@ -1,0 +1,10 @@
+Pasos para proyecto final API
+
+1) Provisionar BD en RAILWAY
+2) Conectar WorkBench a la BD en RAILWAY
+3) Crear BD estando WorkBench Local
+4) Proyecto de Express/Swagger hacerlo Dep, Capt
+5) Crear las variables de entorno de RAILWAY, en el servidor Express
+6) Publicar Repositorio en Github
+7) Crear Aplicación en RAILWAY, apartir del repositorio de Github creado
+8) Crear variables de entorno en la aplicación RAILWAY y ligadas a la BD provisionando en RAILWAY
